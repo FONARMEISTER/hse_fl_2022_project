@@ -1,0 +1,10 @@
+NUMBER=1
+SUM_SIGN=2
+MULT_SIGN=3
+LPAREN=4
+RPAREN=5
+POW=6
+WS=7
+'('=4
+')'=5
+'^'=6
