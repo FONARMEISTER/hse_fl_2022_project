@@ -4,8 +4,10 @@ from arithmeticVisitor import arithmeticVisitor
 from antlr4 import *
 import sys
 import time
+import os
+import os.path
 
-class arithmeticsEvaulator(arithmeticVisitor):
+class arithmeticsEvaluator(arithmeticVisitor):
 
     def visitFile_(self, ctx: arithmeticParser.File_Context):
         for expr in ctx.children:
@@ -42,18 +44,31 @@ class arithmeticsEvaulator(arithmeticVisitor):
         
 
 def main():
-    sys.setrecursionlimit(1000000)
-    start_time = time.time()
-    lexer = arithmeticLexer(FileStream(sys.argv[1]))
-    stream = CommonTokenStream(lexer)
-    parser = arithmeticParser(stream)
-    tree = parser.file_()
-    with open("output.txt", "w") as out:
-        for exprs in tree.children:
-            result = arithmeticsEvaulator().visit(exprs)
-            if result != None:
-                out.write(str(result) + '\n')
-    print('Time:', time.time() - start_time, 'seconds')
+    sys.setrecursionlimit(2000000)
+    tests_dir = os.path.join(os.getcwd(), 'tests')
+    tests = os.listdir(tests_dir)
+    test_count = 0
+    for test in tests:
+        test_count += 1
+        print('Test', os.path.splitext(test)[0])
+        start_time = time.time()
+        lexer = arithmeticLexer(FileStream(os.path.join(tests_dir, test)))
+        stream = CommonTokenStream(lexer)
+        parser = arithmeticParser(stream)
+        tree = parser.file_()
+        print('Parse Tree building time :', time.time() - start_time, 'seconds')
+        if ('Large' in test):
+            print()
+            continue
+        out_path = os.path.join(os.getcwd(), 'output', os.path.splitext(test)[0] + '.out')
+        with open(out_path, "w") as out:
+            start_time = time.time()
+            for exprs in tree.children:
+                result = arithmeticsEvaluator().visit(exprs)
+                if result != None:
+                    out.write(str(result) + '\n')
+        print('Evaluating time:', time.time() - start_time, 'seconds')
+        print()
 
 
 if __name__ == '__main__':
