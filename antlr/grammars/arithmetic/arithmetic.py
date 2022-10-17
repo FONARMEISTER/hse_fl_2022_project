@@ -4,6 +4,7 @@ from arithmeticParser import arithmeticParser
 from arithmeticVisitor import arithmeticVisitor
 from antlr4 import *
 import sys
+from datetime import datetime
 
 class arithmeticsEvaulator(arithmeticVisitor):
 
@@ -42,6 +43,7 @@ class arithmeticsEvaulator(arithmeticVisitor):
         
 
 def main():
+    start_time = datetime.now()
     lexer = arithmeticLexer(FileStream(sys.argv[1]))
     stream = CommonTokenStream(lexer)
     parser = arithmeticParser(stream)
@@ -51,6 +53,7 @@ def main():
             result = arithmeticsEvaulator().visit(exprs)
             if result != None:
                 out.write(str(result) + '\n')
+    print(datetime.now() - start_time)
 
 
 if __name__ == '__main__':

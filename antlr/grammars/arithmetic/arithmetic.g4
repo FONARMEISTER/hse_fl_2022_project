@@ -12,7 +12,7 @@ atom     : NUMBER;
 
 NUMBER   : '-'? ('0' .. '9')+ ;
 
-SUM_SIGN     : (PLUS | MINUS ) ;
+SUM_SIGN     : (PLUS | MINUS) ;
 
 MULT_SIGN    : (TIMES | DIV) ;  
 
