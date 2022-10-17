@@ -2,12 +2,10 @@ grammar psp_mutual;
 
 file_ : expression* EOF;
 
-expression      : S;
+expression      : s;
 
-S       : S1'('S')'
-        | ;
+s       : s1?'('s?')' ;
 
-S1      : S'['S']' 
-        | ;
+s1      : s?'['s?']' ;
 
 WS       : [ \r\n\t] + -> skip ;
