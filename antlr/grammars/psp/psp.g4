@@ -2,12 +2,26 @@ grammar psp;
 
 file_ : expression* EOF;
 
-expression      : S;
+expression      : s';';
 
-S       : '('S')'S1
-        | ;
+s       : lrp s? rrp s? 
+        | lsp s? rsp s? ;
+        
 
-S1      : '['S']'S 
-        | ;
+lrp     : LROUNDPAREN ;
+
+rrp     : RROUNDPAREN ;
+
+lsp     : LSQUAREPAREN ;
+
+rsp     : RSQUAREPAREN ;
+
+LROUNDPAREN     : '(' ;
+
+RROUNDPAREN     : ')' ;
+
+LSQUAREPAREN    : '[' ;
+
+RSQUAREPAREN    : ']' ;
 
 WS       : [ \r\n\t] + -> skip ;

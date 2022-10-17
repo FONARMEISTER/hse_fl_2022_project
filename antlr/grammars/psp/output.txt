@@ -1,0 +1,5 @@
+OpenRoundParen : 34792
+CloseRoundParen : 34792
+OpenSquareParen : 40333
+CLoseSquareParen : 40333
+PSP count : 4

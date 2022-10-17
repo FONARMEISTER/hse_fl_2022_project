@@ -1,5 +1,4 @@
 from arithmeticLexer import arithmeticLexer
-from arithmeticListener import arithmeticListener
 from arithmeticParser import arithmeticParser
 from arithmeticVisitor import arithmeticVisitor
 from antlr4 import *
