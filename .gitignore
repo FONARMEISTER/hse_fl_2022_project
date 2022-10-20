@@ -1,3 +1,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.antlr/
+*.interp
+*.tokens
+antlr/**/*Listener.py
+antlr/**/*Lexer.py
+antlr/**/*Parser.py
+antlr/**/*Visitor.py
