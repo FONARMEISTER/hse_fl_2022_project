@@ -1,0 +1,129 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> LPR expr RPR expr
+Rule 2     expr -> LPS expr RPS expr
+Rule 3     expr -> <empty>
+
+Terminals, with rules where they appear
+
+LPR                  : 1
+LPS                  : 2
+RPR                  : 1
+RPS                  : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 1 1 2 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . LPR expr RPR expr
+    (2) expr -> . LPS expr RPS expr
+    (3) expr -> .
+
+    LPR             shift and go to state 2
+    LPS             shift and go to state 3
+    $end            reduce using rule 3 (expr -> .)
+
+    expr                           shift and go to state 1
+
+state 1
+
+    (0) S' -> expr .
+
+
+
+state 2
+
+    (1) expr -> LPR . expr RPR expr
+    (1) expr -> . LPR expr RPR expr
+    (2) expr -> . LPS expr RPS expr
+    (3) expr -> .
+
+    LPR             shift and go to state 2
+    LPS             shift and go to state 3
+    RPR             reduce using rule 3 (expr -> .)
+
+    expr                           shift and go to state 4
+
+state 3
+
+    (2) expr -> LPS . expr RPS expr
+    (1) expr -> . LPR expr RPR expr
+    (2) expr -> . LPS expr RPS expr
+    (3) expr -> .
+
+    LPR             shift and go to state 2
+    LPS             shift and go to state 3
+    RPS             reduce using rule 3 (expr -> .)
+
+    expr                           shift and go to state 5
+
+state 4
+
+    (1) expr -> LPR expr . RPR expr
+
+    RPR             shift and go to state 6
+
+
+state 5
+
+    (2) expr -> LPS expr . RPS expr
+
+    RPS             shift and go to state 7
+
+
+state 6
+
+    (1) expr -> LPR expr RPR . expr
+    (1) expr -> . LPR expr RPR expr
+    (2) expr -> . LPS expr RPS expr
+    (3) expr -> .
+
+    LPR             shift and go to state 2
+    LPS             shift and go to state 3
+    $end            reduce using rule 3 (expr -> .)
+    RPR             reduce using rule 3 (expr -> .)
+    RPS             reduce using rule 3 (expr -> .)
+
+    expr                           shift and go to state 8
+
+state 7
+
+    (2) expr -> LPS expr RPS . expr
+    (1) expr -> . LPR expr RPR expr
+    (2) expr -> . LPS expr RPS expr
+    (3) expr -> .
+
+    LPR             shift and go to state 2
+    LPS             shift and go to state 3
+    $end            reduce using rule 3 (expr -> .)
+    RPR             reduce using rule 3 (expr -> .)
+    RPS             reduce using rule 3 (expr -> .)
+
+    expr                           shift and go to state 9
+
+state 8
+
+    (1) expr -> LPR expr RPR expr .
+
+    $end            reduce using rule 1 (expr -> LPR expr RPR expr .)
+    RPR             reduce using rule 1 (expr -> LPR expr RPR expr .)
+    RPS             reduce using rule 1 (expr -> LPR expr RPR expr .)
+
+
+state 9
+
+    (2) expr -> LPS expr RPS expr .
+
+    $end            reduce using rule 2 (expr -> LPS expr RPS expr .)
+    RPR             reduce using rule 2 (expr -> LPS expr RPS expr .)
+    RPS             reduce using rule 2 (expr -> LPS expr RPS expr .)
+

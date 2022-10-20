@@ -1,0 +1,301 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> term
+Rule 2     expr -> term PLUS expr
+Rule 3     expr -> term MINUS expr
+Rule 4     term -> factor
+Rule 5     term -> factor MULT term
+Rule 6     term -> factor DIV term
+Rule 7     factor -> atom
+Rule 8     factor -> atom POW factor
+Rule 9     atom -> LPAREN expr RPAREN
+Rule 10    atom -> NUM
+
+Terminals, with rules where they appear
+
+DIV                  : 6
+LPAREN               : 9
+MINUS                : 3
+MULT                 : 5
+NUM                  : 10
+PLUS                 : 2
+POW                  : 8
+RPAREN               : 9
+error                : 
+
+Nonterminals, with rules where they appear
+
+atom                 : 7 8
+expr                 : 2 3 9 0
+factor               : 4 5 6 8
+term                 : 1 2 3 5 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . term
+    (2) expr -> . term PLUS expr
+    (3) expr -> . term MINUS expr
+    (4) term -> . factor
+    (5) term -> . factor MULT term
+    (6) term -> . factor DIV term
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    expr                           shift and go to state 1
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+    atom                           shift and go to state 4
+
+state 1
+
+    (0) S' -> expr .
+
+
+
+state 2
+
+    (1) expr -> term .
+    (2) expr -> term . PLUS expr
+    (3) expr -> term . MINUS expr
+
+    $end            reduce using rule 1 (expr -> term .)
+    RPAREN          reduce using rule 1 (expr -> term .)
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+
+
+state 3
+
+    (4) term -> factor .
+    (5) term -> factor . MULT term
+    (6) term -> factor . DIV term
+
+    PLUS            reduce using rule 4 (term -> factor .)
+    MINUS           reduce using rule 4 (term -> factor .)
+    $end            reduce using rule 4 (term -> factor .)
+    RPAREN          reduce using rule 4 (term -> factor .)
+    MULT            shift and go to state 9
+    DIV             shift and go to state 10
+
+
+state 4
+
+    (7) factor -> atom .
+    (8) factor -> atom . POW factor
+
+    MULT            reduce using rule 7 (factor -> atom .)
+    DIV             reduce using rule 7 (factor -> atom .)
+    PLUS            reduce using rule 7 (factor -> atom .)
+    MINUS           reduce using rule 7 (factor -> atom .)
+    $end            reduce using rule 7 (factor -> atom .)
+    RPAREN          reduce using rule 7 (factor -> atom .)
+    POW             shift and go to state 11
+
+
+state 5
+
+    (9) atom -> LPAREN . expr RPAREN
+    (1) expr -> . term
+    (2) expr -> . term PLUS expr
+    (3) expr -> . term MINUS expr
+    (4) term -> . factor
+    (5) term -> . factor MULT term
+    (6) term -> . factor DIV term
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    expr                           shift and go to state 12
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+    atom                           shift and go to state 4
+
+state 6
+
+    (10) atom -> NUM .
+
+    POW             reduce using rule 10 (atom -> NUM .)
+    MULT            reduce using rule 10 (atom -> NUM .)
+    DIV             reduce using rule 10 (atom -> NUM .)
+    PLUS            reduce using rule 10 (atom -> NUM .)
+    MINUS           reduce using rule 10 (atom -> NUM .)
+    $end            reduce using rule 10 (atom -> NUM .)
+    RPAREN          reduce using rule 10 (atom -> NUM .)
+
+
+state 7
+
+    (2) expr -> term PLUS . expr
+    (1) expr -> . term
+    (2) expr -> . term PLUS expr
+    (3) expr -> . term MINUS expr
+    (4) term -> . factor
+    (5) term -> . factor MULT term
+    (6) term -> . factor DIV term
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    term                           shift and go to state 2
+    expr                           shift and go to state 13
+    factor                         shift and go to state 3
+    atom                           shift and go to state 4
+
+state 8
+
+    (3) expr -> term MINUS . expr
+    (1) expr -> . term
+    (2) expr -> . term PLUS expr
+    (3) expr -> . term MINUS expr
+    (4) term -> . factor
+    (5) term -> . factor MULT term
+    (6) term -> . factor DIV term
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    term                           shift and go to state 2
+    expr                           shift and go to state 14
+    factor                         shift and go to state 3
+    atom                           shift and go to state 4
+
+state 9
+
+    (5) term -> factor MULT . term
+    (4) term -> . factor
+    (5) term -> . factor MULT term
+    (6) term -> . factor DIV term
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    factor                         shift and go to state 3
+    term                           shift and go to state 15
+    atom                           shift and go to state 4
+
+state 10
+
+    (6) term -> factor DIV . term
+    (4) term -> . factor
+    (5) term -> . factor MULT term
+    (6) term -> . factor DIV term
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    factor                         shift and go to state 3
+    term                           shift and go to state 16
+    atom                           shift and go to state 4
+
+state 11
+
+    (8) factor -> atom POW . factor
+    (7) factor -> . atom
+    (8) factor -> . atom POW factor
+    (9) atom -> . LPAREN expr RPAREN
+    (10) atom -> . NUM
+
+    LPAREN          shift and go to state 5
+    NUM             shift and go to state 6
+
+    atom                           shift and go to state 4
+    factor                         shift and go to state 17
+
+state 12
+
+    (9) atom -> LPAREN expr . RPAREN
+
+    RPAREN          shift and go to state 18
+
+
+state 13
+
+    (2) expr -> term PLUS expr .
+
+    $end            reduce using rule 2 (expr -> term PLUS expr .)
+    RPAREN          reduce using rule 2 (expr -> term PLUS expr .)
+
+
+state 14
+
+    (3) expr -> term MINUS expr .
+
+    $end            reduce using rule 3 (expr -> term MINUS expr .)
+    RPAREN          reduce using rule 3 (expr -> term MINUS expr .)
+
+
+state 15
+
+    (5) term -> factor MULT term .
+
+    PLUS            reduce using rule 5 (term -> factor MULT term .)
+    MINUS           reduce using rule 5 (term -> factor MULT term .)
+    $end            reduce using rule 5 (term -> factor MULT term .)
+    RPAREN          reduce using rule 5 (term -> factor MULT term .)
+
+
+state 16
+
+    (6) term -> factor DIV term .
+
+    PLUS            reduce using rule 6 (term -> factor DIV term .)
+    MINUS           reduce using rule 6 (term -> factor DIV term .)
+    $end            reduce using rule 6 (term -> factor DIV term .)
+    RPAREN          reduce using rule 6 (term -> factor DIV term .)
+
+
+state 17
+
+    (8) factor -> atom POW factor .
+
+    MULT            reduce using rule 8 (factor -> atom POW factor .)
+    DIV             reduce using rule 8 (factor -> atom POW factor .)
+    PLUS            reduce using rule 8 (factor -> atom POW factor .)
+    MINUS           reduce using rule 8 (factor -> atom POW factor .)
+    $end            reduce using rule 8 (factor -> atom POW factor .)
+    RPAREN          reduce using rule 8 (factor -> atom POW factor .)
+
+
+state 18
+
+    (9) atom -> LPAREN expr RPAREN .
+
+    POW             reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+    MULT            reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+    DIV             reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+    PLUS            reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+    $end            reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 9 (atom -> LPAREN expr RPAREN .)
+

@@ -1,0 +1,336 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> S
+Rule 1     S -> <empty>
+Rule 2     S -> E S
+Rule 3     S -> A B
+Rule 4     E -> X Y
+Rule 5     E -> O P
+Rule 6     A -> C S
+Rule 7     B -> D S
+Rule 8     X -> O S
+Rule 9     O -> LPS
+Rule 10    Y -> E P
+Rule 11    P -> RPS
+Rule 12    C -> LPR
+Rule 13    D -> RPR
+
+Terminals, with rules where they appear
+
+LPR                  : 12
+LPS                  : 9
+RPR                  : 13
+RPS                  : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+A                    : 3
+B                    : 3
+C                    : 6
+D                    : 7
+E                    : 2 10
+O                    : 5 8
+P                    : 5 10
+S                    : 2 6 7 8 0
+X                    : 4
+Y                    : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . S
+    (1) S -> .
+    (2) S -> . E S
+    (3) S -> . A B
+    (4) E -> . X Y
+    (5) E -> . O P
+    (6) A -> . C S
+    (8) X -> . O S
+    (9) O -> . LPS
+    (12) C -> . LPR
+
+    $end            reduce using rule 1 (S -> .)
+    LPS             shift and go to state 7
+    LPR             shift and go to state 8
+
+    S                              shift and go to state 1
+    E                              shift and go to state 2
+    A                              shift and go to state 3
+    X                              shift and go to state 4
+    O                              shift and go to state 5
+    C                              shift and go to state 6
+
+state 1
+
+    (0) S' -> S .
+
+
+
+state 2
+
+    (2) S -> E . S
+    (1) S -> .
+    (2) S -> . E S
+    (3) S -> . A B
+    (4) E -> . X Y
+    (5) E -> . O P
+    (6) A -> . C S
+    (8) X -> . O S
+    (9) O -> . LPS
+    (12) C -> . LPR
+
+  ! shift/reduce conflict for LPS resolved as shift
+    $end            reduce using rule 1 (S -> .)
+    RPR             reduce using rule 1 (S -> .)
+    LPS             shift and go to state 7
+    LPR             shift and go to state 8
+
+  ! LPS             [ reduce using rule 1 (S -> .) ]
+
+    E                              shift and go to state 2
+    S                              shift and go to state 9
+    A                              shift and go to state 3
+    X                              shift and go to state 4
+    O                              shift and go to state 5
+    C                              shift and go to state 6
+
+state 3
+
+    (3) S -> A . B
+    (7) B -> . D S
+    (13) D -> . RPR
+
+    RPR             shift and go to state 12
+
+    B                              shift and go to state 10
+    D                              shift and go to state 11
+
+state 4
+
+    (4) E -> X . Y
+    (10) Y -> . E P
+    (4) E -> . X Y
+    (5) E -> . O P
+    (8) X -> . O S
+    (9) O -> . LPS
+
+    LPS             shift and go to state 7
+
+    X                              shift and go to state 4
+    Y                              shift and go to state 13
+    E                              shift and go to state 14
+    O                              shift and go to state 5
+
+state 5
+
+    (5) E -> O . P
+    (8) X -> O . S
+    (11) P -> . RPS
+    (1) S -> .
+    (2) S -> . E S
+    (3) S -> . A B
+    (4) E -> . X Y
+    (5) E -> . O P
+    (6) A -> . C S
+    (8) X -> . O S
+    (9) O -> . LPS
+    (12) C -> . LPR
+
+  ! shift/reduce conflict for LPS resolved as shift
+    RPS             shift and go to state 17
+    LPS             shift and go to state 7
+    LPR             shift and go to state 8
+
+  ! LPS             [ reduce using rule 1 (S -> .) ]
+
+    O                              shift and go to state 5
+    P                              shift and go to state 15
+    S                              shift and go to state 16
+    E                              shift and go to state 2
+    A                              shift and go to state 3
+    X                              shift and go to state 4
+    C                              shift and go to state 6
+
+state 6
+
+    (6) A -> C . S
+    (1) S -> .
+    (2) S -> . E S
+    (3) S -> . A B
+    (4) E -> . X Y
+    (5) E -> . O P
+    (6) A -> . C S
+    (8) X -> . O S
+    (9) O -> . LPS
+    (12) C -> . LPR
+
+    RPR             reduce using rule 1 (S -> .)
+    LPS             shift and go to state 7
+    LPR             shift and go to state 8
+
+    C                              shift and go to state 6
+    S                              shift and go to state 18
+    E                              shift and go to state 2
+    A                              shift and go to state 3
+    X                              shift and go to state 4
+    O                              shift and go to state 5
+
+state 7
+
+    (9) O -> LPS .
+
+    RPS             reduce using rule 9 (O -> LPS .)
+    LPS             reduce using rule 9 (O -> LPS .)
+    LPR             reduce using rule 9 (O -> LPS .)
+
+
+state 8
+
+    (12) C -> LPR .
+
+    LPS             reduce using rule 12 (C -> LPR .)
+    LPR             reduce using rule 12 (C -> LPR .)
+    RPR             reduce using rule 12 (C -> LPR .)
+
+
+state 9
+
+    (2) S -> E S .
+
+    $end            reduce using rule 2 (S -> E S .)
+    LPS             reduce using rule 2 (S -> E S .)
+    RPR             reduce using rule 2 (S -> E S .)
+
+
+state 10
+
+    (3) S -> A B .
+
+    $end            reduce using rule 3 (S -> A B .)
+    LPS             reduce using rule 3 (S -> A B .)
+    RPR             reduce using rule 3 (S -> A B .)
+
+
+state 11
+
+    (7) B -> D . S
+    (1) S -> .
+    (2) S -> . E S
+    (3) S -> . A B
+    (4) E -> . X Y
+    (5) E -> . O P
+    (6) A -> . C S
+    (8) X -> . O S
+    (9) O -> . LPS
+    (12) C -> . LPR
+
+  ! shift/reduce conflict for LPS resolved as shift
+    $end            reduce using rule 1 (S -> .)
+    RPR             reduce using rule 1 (S -> .)
+    LPS             shift and go to state 7
+    LPR             shift and go to state 8
+
+  ! LPS             [ reduce using rule 1 (S -> .) ]
+
+    S                              shift and go to state 19
+    E                              shift and go to state 2
+    A                              shift and go to state 3
+    X                              shift and go to state 4
+    O                              shift and go to state 5
+    C                              shift and go to state 6
+
+state 12
+
+    (13) D -> RPR .
+
+    LPS             reduce using rule 13 (D -> RPR .)
+    LPR             reduce using rule 13 (D -> RPR .)
+    $end            reduce using rule 13 (D -> RPR .)
+    RPR             reduce using rule 13 (D -> RPR .)
+
+
+state 13
+
+    (4) E -> X Y .
+
+    LPS             reduce using rule 4 (E -> X Y .)
+    LPR             reduce using rule 4 (E -> X Y .)
+    $end            reduce using rule 4 (E -> X Y .)
+    RPR             reduce using rule 4 (E -> X Y .)
+    RPS             reduce using rule 4 (E -> X Y .)
+
+
+state 14
+
+    (10) Y -> E . P
+    (11) P -> . RPS
+
+    RPS             shift and go to state 17
+
+    P                              shift and go to state 20
+
+state 15
+
+    (5) E -> O P .
+
+    LPS             reduce using rule 5 (E -> O P .)
+    LPR             reduce using rule 5 (E -> O P .)
+    $end            reduce using rule 5 (E -> O P .)
+    RPR             reduce using rule 5 (E -> O P .)
+    RPS             reduce using rule 5 (E -> O P .)
+
+
+state 16
+
+    (8) X -> O S .
+
+    LPS             reduce using rule 8 (X -> O S .)
+
+
+state 17
+
+    (11) P -> RPS .
+
+    LPS             reduce using rule 11 (P -> RPS .)
+    LPR             reduce using rule 11 (P -> RPS .)
+    $end            reduce using rule 11 (P -> RPS .)
+    RPR             reduce using rule 11 (P -> RPS .)
+    RPS             reduce using rule 11 (P -> RPS .)
+
+
+state 18
+
+    (6) A -> C S .
+
+    RPR             reduce using rule 6 (A -> C S .)
+
+
+state 19
+
+    (7) B -> D S .
+
+    $end            reduce using rule 7 (B -> D S .)
+    LPS             reduce using rule 7 (B -> D S .)
+    RPR             reduce using rule 7 (B -> D S .)
+
+
+state 20
+
+    (10) Y -> E P .
+
+    LPS             reduce using rule 10 (Y -> E P .)
+    LPR             reduce using rule 10 (Y -> E P .)
+    $end            reduce using rule 10 (Y -> E P .)
+    RPR             reduce using rule 10 (Y -> E P .)
+    RPS             reduce using rule 10 (Y -> E P .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for LPS in state 2 resolved as shift
+WARNING: shift/reduce conflict for LPS in state 5 resolved as shift
+WARNING: shift/reduce conflict for LPS in state 11 resolved as shift
