@@ -1,14 +1,15 @@
-grammar arithmetic;
+grammar arithmetic2;
 
 file_ : expression* EOF;
 
-expression     :  expression  POW expression #PowExpr
-               |  expression  MULT_SIGN  expression #MultExpr
-               |  expression  SUM_SIGN expression #SumExpr
-               |  LPAREN expression RPAREN #BracketExpr
-               |  atom #AtomExpr ;
+expression      :  term (SUM_SIGN term)* #ExprSum ;
 
-atom     : NUMBER;
+term            : factor (MULT_SIGN factor)* #TermMult ;
+
+factor          : atom (POW factor)? #FactorPow ;
+
+atom            : LPAREN expression RPAREN #AtomExpr
+                | NUMBER #AtomNum ; 
 
 NUMBER   : '-'? ('0' .. '9')+ ;
 
