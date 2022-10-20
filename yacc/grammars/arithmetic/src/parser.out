@@ -1,0 +1,376 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> expr PLUS expr
+Rule 2     expr -> expr MINUS expr
+Rule 3     expr -> expr MULT expr
+Rule 4     expr -> expr DIV expr
+Rule 5     expr -> expr POW expr
+Rule 6     expr -> NUM
+Rule 7     expr -> <empty>
+Rule 8     expr -> LPAREN expr RPAREN
+
+Terminals, with rules where they appear
+
+DIV                  : 4
+LPAREN               : 8
+MINUS                : 2
+MULT                 : 3
+NUM                  : 6
+PLUS                 : 1
+POW                  : 5
+RPAREN               : 8
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 1 1 2 2 3 3 4 4 5 5 8 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    $end            reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 1
+
+state 1
+
+    (0) S' -> expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    PLUS            shift and go to state 4
+    MINUS           shift and go to state 5
+    MULT            shift and go to state 6
+    DIV             shift and go to state 7
+    POW             shift and go to state 8
+
+
+state 2
+
+    (6) expr -> NUM .
+
+    PLUS            reduce using rule 6 (expr -> NUM .)
+    MINUS           reduce using rule 6 (expr -> NUM .)
+    MULT            reduce using rule 6 (expr -> NUM .)
+    DIV             reduce using rule 6 (expr -> NUM .)
+    POW             reduce using rule 6 (expr -> NUM .)
+    $end            reduce using rule 6 (expr -> NUM .)
+    RPAREN          reduce using rule 6 (expr -> NUM .)
+
+
+state 3
+
+    (8) expr -> LPAREN . expr RPAREN
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    RPAREN          reduce using rule 7 (expr -> .)
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 9
+
+state 4
+
+    (1) expr -> expr PLUS . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    $end            reduce using rule 7 (expr -> .)
+    RPAREN          reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 10
+
+state 5
+
+    (2) expr -> expr MINUS . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    $end            reduce using rule 7 (expr -> .)
+    RPAREN          reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 11
+
+state 6
+
+    (3) expr -> expr MULT . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    $end            reduce using rule 7 (expr -> .)
+    RPAREN          reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 12
+
+state 7
+
+    (4) expr -> expr DIV . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    $end            reduce using rule 7 (expr -> .)
+    RPAREN          reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 13
+
+state 8
+
+    (5) expr -> expr POW . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr MULT expr
+    (4) expr -> . expr DIV expr
+    (5) expr -> . expr POW expr
+    (6) expr -> . NUM
+    (7) expr -> .
+    (8) expr -> . LPAREN expr RPAREN
+
+    NUM             shift and go to state 2
+    PLUS            reduce using rule 7 (expr -> .)
+    MINUS           reduce using rule 7 (expr -> .)
+    MULT            reduce using rule 7 (expr -> .)
+    DIV             reduce using rule 7 (expr -> .)
+    POW             reduce using rule 7 (expr -> .)
+    $end            reduce using rule 7 (expr -> .)
+    RPAREN          reduce using rule 7 (expr -> .)
+    LPAREN          shift and go to state 3
+
+    expr                           shift and go to state 14
+
+state 9
+
+    (8) expr -> LPAREN expr . RPAREN
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    RPAREN          shift and go to state 15
+    PLUS            shift and go to state 4
+    MINUS           shift and go to state 5
+    MULT            shift and go to state 6
+    DIV             shift and go to state 7
+    POW             shift and go to state 8
+
+
+state 10
+
+    (1) expr -> expr PLUS expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    PLUS            reduce using rule 1 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 1 (expr -> expr PLUS expr .)
+    $end            reduce using rule 1 (expr -> expr PLUS expr .)
+    RPAREN          reduce using rule 1 (expr -> expr PLUS expr .)
+    MULT            shift and go to state 6
+    DIV             shift and go to state 7
+    POW             shift and go to state 8
+
+  ! MULT            [ reduce using rule 1 (expr -> expr PLUS expr .) ]
+  ! DIV             [ reduce using rule 1 (expr -> expr PLUS expr .) ]
+  ! POW             [ reduce using rule 1 (expr -> expr PLUS expr .) ]
+  ! PLUS            [ shift and go to state 4 ]
+  ! MINUS           [ shift and go to state 5 ]
+
+
+state 11
+
+    (2) expr -> expr MINUS expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    PLUS            reduce using rule 2 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 2 (expr -> expr MINUS expr .)
+    $end            reduce using rule 2 (expr -> expr MINUS expr .)
+    RPAREN          reduce using rule 2 (expr -> expr MINUS expr .)
+    MULT            shift and go to state 6
+    DIV             shift and go to state 7
+    POW             shift and go to state 8
+
+  ! MULT            [ reduce using rule 2 (expr -> expr MINUS expr .) ]
+  ! DIV             [ reduce using rule 2 (expr -> expr MINUS expr .) ]
+  ! POW             [ reduce using rule 2 (expr -> expr MINUS expr .) ]
+  ! PLUS            [ shift and go to state 4 ]
+  ! MINUS           [ shift and go to state 5 ]
+
+
+state 12
+
+    (3) expr -> expr MULT expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    PLUS            reduce using rule 3 (expr -> expr MULT expr .)
+    MINUS           reduce using rule 3 (expr -> expr MULT expr .)
+    MULT            reduce using rule 3 (expr -> expr MULT expr .)
+    DIV             reduce using rule 3 (expr -> expr MULT expr .)
+    $end            reduce using rule 3 (expr -> expr MULT expr .)
+    RPAREN          reduce using rule 3 (expr -> expr MULT expr .)
+    POW             shift and go to state 8
+
+  ! POW             [ reduce using rule 3 (expr -> expr MULT expr .) ]
+  ! PLUS            [ shift and go to state 4 ]
+  ! MINUS           [ shift and go to state 5 ]
+  ! MULT            [ shift and go to state 6 ]
+  ! DIV             [ shift and go to state 7 ]
+
+
+state 13
+
+    (4) expr -> expr DIV expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    PLUS            reduce using rule 4 (expr -> expr DIV expr .)
+    MINUS           reduce using rule 4 (expr -> expr DIV expr .)
+    MULT            reduce using rule 4 (expr -> expr DIV expr .)
+    DIV             reduce using rule 4 (expr -> expr DIV expr .)
+    $end            reduce using rule 4 (expr -> expr DIV expr .)
+    RPAREN          reduce using rule 4 (expr -> expr DIV expr .)
+    POW             shift and go to state 8
+
+  ! POW             [ reduce using rule 4 (expr -> expr DIV expr .) ]
+  ! PLUS            [ shift and go to state 4 ]
+  ! MINUS           [ shift and go to state 5 ]
+  ! MULT            [ shift and go to state 6 ]
+  ! DIV             [ shift and go to state 7 ]
+
+
+state 14
+
+    (5) expr -> expr POW expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . MULT expr
+    (4) expr -> expr . DIV expr
+    (5) expr -> expr . POW expr
+
+    PLUS            reduce using rule 5 (expr -> expr POW expr .)
+    MINUS           reduce using rule 5 (expr -> expr POW expr .)
+    MULT            reduce using rule 5 (expr -> expr POW expr .)
+    DIV             reduce using rule 5 (expr -> expr POW expr .)
+    $end            reduce using rule 5 (expr -> expr POW expr .)
+    RPAREN          reduce using rule 5 (expr -> expr POW expr .)
+    POW             shift and go to state 8
+
+  ! POW             [ reduce using rule 5 (expr -> expr POW expr .) ]
+  ! PLUS            [ shift and go to state 4 ]
+  ! MINUS           [ shift and go to state 5 ]
+  ! MULT            [ shift and go to state 6 ]
+  ! DIV             [ shift and go to state 7 ]
+
+
+state 15
+
+    (8) expr -> LPAREN expr RPAREN .
+
+    PLUS            reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    MULT            reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    DIV             reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    POW             reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    $end            reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+
