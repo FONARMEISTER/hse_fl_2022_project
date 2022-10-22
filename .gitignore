@@ -10,3 +10,4 @@ antlr/**/*Parser.py
 antlr/**/*Visitor.py
 *.c
 *.h
+calc
