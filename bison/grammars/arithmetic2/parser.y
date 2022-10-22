@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define YYINITDEPTH 1000000
+#define YYMAXDEPTH 10000000
 %}
 
 %union {
