@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define YYINITDEPTH 1000000
+#define YYMAXDEPTH 10000000
 %}
 
 %union {
@@ -15,6 +16,10 @@
 %token<num> NUMBER
 %type<num> exp
 %token PLUS MINUS MULT LPAREN RPAREN DIV POW
+
+%left PLUS MINUS
+%left MULT DIV
+%right POW
 
 /* rules */
 %start Input
