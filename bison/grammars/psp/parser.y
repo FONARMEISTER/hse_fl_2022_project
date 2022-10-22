@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#define YYINITDEPTH 1000000
+#define YYMAXDEPTH 10000000
 %}
 
 %union {
@@ -24,18 +26,13 @@ Input:
 ;
 
 line:
-    s END { printf("%s\n", $1); }
+    s END {  }
 |   EOL
 ;
 
-s:  LROUNDPAREN s RROUNDPAREN s { $$ = yylval.str; }
-|   LROUNDPAREN s RROUNDPAREN { $$ = yylval.str; }
-|   LROUNDPAREN RROUNDPAREN s { $$ = yylval.str; }
-|   LROUNDPAREN RROUNDPAREN { $$ = "()"; }
-|   LSQUAREPAREN s RSQUAREPAREN s { $$ = yylval.str; }
-|   LSQUAREPAREN s RSQUAREPAREN { $$ = yylval.str; }
-|   LSQUAREPAREN RSQUAREPAREN s { $$ = yylval.str; }
-|   LSQUAREPAREN RSQUAREPAREN { $$ = "[]"; }
+s:  LROUNDPAREN s RROUNDPAREN s {  }
+|   LSQUAREPAREN s RSQUAREPAREN s { }
+|
 ;
 
 %%
