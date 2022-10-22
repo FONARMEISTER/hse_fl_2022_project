@@ -24,6 +24,8 @@
 %left MULT DIV
 %right POW
 
+
+
 /* rules */
 %start Input
 %%
@@ -40,14 +42,14 @@ line:
 
 expr:
     term { $$ = $1; }
-|   term PLUS expr { $$ = $1 + $3; }
-|   term MINUS expr { $$ = $1 - $3; }
+|   expr PLUS term {  $$ = $1 + $3; }
+|   expr MINUS term { $$ = $1 - $3; }
 ;
 
 term:
     factor { $$ = $1; }
-|   factor MULT term { $$ = $1 * $3; }
-|   factor DIV term { $$ = $1 / $3; }
+|   term MULT factor { $$ = $1 * $3; }
+|   term DIV factor { $$ = $1 / $3; }
 ;
 
 factor:
