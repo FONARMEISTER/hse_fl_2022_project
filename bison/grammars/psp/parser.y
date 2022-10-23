@@ -9,7 +9,7 @@
 %}
 
 %union {
-    char *str;
+    char str;
 }
 
 %type<str> s
