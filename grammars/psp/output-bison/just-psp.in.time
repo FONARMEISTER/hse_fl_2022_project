@@ -1,0 +1,5 @@
+./run-tests.sh: line 81:  2470 Segmentation fault      ./calc < "$path"tests/"$filename"
+
+real	0m0.010s
+user	0m0.000s
+sys	0m0.006s
