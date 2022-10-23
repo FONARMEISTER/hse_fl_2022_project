@@ -1,5 +1,5 @@
-./run-tests.sh: line 81:  2469 Segmentation fault      ./calc < "$path"tests/"$filename"
+./run-tests.sh: line 96:  8839 Segmentation fault      ./calc < "$path"tests/"$filename"
 
-real	0m0.010s
-user	0m0.005s
+real	0m0.007s
+user	0m0.004s
 sys	0m0.000s

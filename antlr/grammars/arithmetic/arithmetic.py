@@ -44,31 +44,18 @@ class arithmeticsEvaluator(arithmeticVisitor):
         
 
 def main():
-    sys.setrecursionlimit(2000000)
-    tests_dir = os.path.join(os.getcwd(), 'tests')
-    tests = os.listdir(tests_dir)
-    test_count = 0
-    for test in tests:
-        test_count += 1
-        print('Test', os.path.splitext(test)[0])
-        start_time = time.time()
-        lexer = arithmeticLexer(FileStream(os.path.join(tests_dir, test)))
-        stream = CommonTokenStream(lexer)
-        parser = arithmeticParser(stream)
-        tree = parser.file_()
-        print('Parse Tree building time :', time.time() - start_time, 'seconds')
-        if ('Large' in test):
-            print()
-            continue
-        out_path = os.path.join(os.getcwd(), 'output', os.path.splitext(test)[0] + '.out')
-        with open(out_path, "w") as out:
-            start_time = time.time()
-            for exprs in tree.children:
-                result = arithmeticsEvaluator().visit(exprs)
-                if result != None:
-                    out.write(str(result) + '\n')
-        print('Evaluating time:', time.time() - start_time, 'seconds')
-        print()
+    sys.setrecursionlimit(20000000)
+    start_time = time.time()
+    lexer = arithmeticLexer(StdinStream())
+    stream = CommonTokenStream(lexer)
+    parser = arithmeticParser(stream)
+    tree = parser.file_()
+    #print('Parse Tree building time :', time.time() - start_time, 'seconds')
+    #start_time = time.time()
+    #for exprs in tree.children:
+    #    result = arithmeticsEvaluator().visit(exprs)
+    #print('Evaluating time:', time.time() - start_time, 'seconds')
+    #print()
 
 
 if __name__ == '__main__':

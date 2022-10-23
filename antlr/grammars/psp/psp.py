@@ -32,34 +32,17 @@ class pspCounter(pspListener):
 
 def main():
     sys.setrecursionlimit(2000000)
-    tests_dir = os.path.join(os.getcwd(), 'tests')
-    tests = os.listdir(tests_dir)
-    test_count = 0
-    for test in tests:
-        test_count += 1
-        print('Test', os.path.splitext(test)[0])
-        start_time = time.time()
-        lexer = pspLexer(FileStream(os.path.join(tests_dir, test)))
-        stream = CommonTokenStream(lexer)
-        parser = pspParser(stream)
-        tree = parser.file_()
-        print('Parse Tree building time :', time.time() - start_time, 'seconds')
-        if ('Large' in test):
-            print()
-            continue
-        start_time = time.time()
-        walker = ParseTreeWalker()
-        counter = pspCounter()
-        walker.walk(counter, tree)
-        print('Walking time:', time.time() - start_time, 'seconds')
-        out_path = os.path.join(os.getcwd(), 'output', os.path.splitext(test)[0] + '.out')
-        with open(out_path, "w") as out:
-            out.write('OpenRoundParen : ' + str(counter.roundOpen) + '\n')
-            out.write('CloseRoundParen : ' + str(counter.roundClose) + '\n')
-            out.write('OpenSquareParen : ' + str(counter.squareOpen) + '\n')
-            out.write('CLoseSquareParen : ' + str(counter.squareClose) + '\n')
-            out.write('PSP count : ' + str(counter.PSPcount) + '\n')
-        print()
+    start_time = time.time()
+    lexer = pspLexer(StdinStream())
+    stream = CommonTokenStream(lexer)
+    parser = pspParser(stream)
+    tree = parser.file_()
+    #print('Parse Tree building time :', time.time() - start_time, 'seconds')
+    #start_time = time.time()
+    #walker = ParseTreeWalker()
+    #counter = pspCounter()
+    #walker.walk(counter, tree)
+    #print('Walking time:', time.time() - start_time, 'seconds')
 
 if __name__ == '__main__':
     main()

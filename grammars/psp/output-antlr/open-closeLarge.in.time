@@ -1,0 +1,5 @@
+./run-tests.sh: line 103:  8576 Segmentation fault      pypy3 antlr/grammars/psp/psp.py < "$path"tests/"$filename"
+
+real	0m0.537s
+user	0m0.466s
+sys	0m0.021s

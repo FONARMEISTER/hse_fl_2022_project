@@ -8,6 +8,8 @@ function put_tests_together {
     echo "      BISON:   " >> "$1"output-summary/"$filename".sum
     cat "$1"output-bison/"$filename".time >> "$1"output-summary/"$filename".sum
     echo "====================" >> "$1"output-summary/"$filename".sum
+    echo "      ANTLR:   " >> "$1"output-summary/"$filename".sum
+    cat "$1"output-antlr/"$filename".time >> "$1"output-summary/"$filename".sum
   done
 }
 
@@ -31,6 +33,13 @@ gcc -o calc lex.yy.c parser.tab.c -lfl -lm
 for filename in $(ls "$path"tests) ; do
   { time ./calc < "$path"tests/"$filename" ;} > /dev/null 2> "$path"output-bison/"$filename".time
 done
+
+antlr4 -Dlanguage=Python3 -visitor antlr/grammars/arithmetic/arithmetic.g4
+
+for filename in $(ls "$path"tests) ; do
+  { time pypy3 antlr/grammars/arithmetic/arithmetic.py < "$path"tests/"$filename" ;} > /dev/null 2> "$path"output-antlr/"$filename".time
+done
+
 
 #write here arithm1
 
@@ -57,6 +66,12 @@ for filename in $(ls "$path"tests) ; do
   { time ./calc < "$path"tests/"$filename" ;} > /dev/null 2> "$path"output-bison/"$filename".time
 done
 
+
+antlr4 -Dlanguage=Python3 -visitor antlr/grammars/arithmetic2/arithmetic2.g4
+
+for filename in $(ls "$path"tests) ; do
+  { time pypy3 antlr/grammars/arithmetic2/arithmetic2.py < "$path"tests/"$filename" ;} > /dev/null 2> "$path"output-antlr/"$filename".time
+done
 #write here arithm2
 
 put_tests_together $path
@@ -82,6 +97,12 @@ for filename in $(ls "$path"tests) ; do
   { time ./calc < "$path"tests/"$filename" ;} > /dev/null 2> "$path"output-bison/"$filename".time
 done
 
+
+antlr4 -Dlanguage=Python3 -visitor antlr/grammars/psp/psp.g4
+
+for filename in $(ls "$path"tests) ; do
+  { time pypy3 antlr/grammars/psp/psp.py < "$path"tests/"$filename" ;} > /dev/null 2> "$path"output-antlr/"$filename".time
+done
 
 # write here psp
 

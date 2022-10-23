@@ -1,13 +1,18 @@
       YACC:   
 
-real	0m0.010s
-user	0m0.004s
+real	0m0.005s
+user	0m0.002s
 sys	0m0.000s
 ====================
       BISON:   
-./run-tests.sh: line 81:  2472 Segmentation fault      ./calc < "$path"tests/"$filename"
+./run-tests.sh: line 96:  8842 Segmentation fault      ./calc < "$path"tests/"$filename"
 
-real	0m0.010s
-user	0m0.000s
-sys	0m0.005s
+real	0m0.007s
+user	0m0.004s
+sys	0m0.000s
 ====================
+      ANTLR:   
+
+real	0m0.523s
+user	0m0.449s
+sys	0m0.030s
