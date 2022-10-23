@@ -1,5 +1,0 @@
-./run-tests.sh: line 9:   554 Segmentation fault      ./calc < tests/"$filename"
-
-real	0m0.011s
-user	0m0.005s
-sys	0m0.000s
