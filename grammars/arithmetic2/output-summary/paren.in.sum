@@ -1,6 +1,12 @@
       YACC:   
 
-real	0m0.010s
-user	0m0.006s
+real	0m0.014s
+user	0m0.008s
+sys	0m0.000s
+====================
+      BISON:   
+
+real	0m0.017s
+user	0m0.010s
 sys	0m0.000s
 ====================
